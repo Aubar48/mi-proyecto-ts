@@ -24,14 +24,14 @@ Refactor – Mejorar el diseño sin romper los tests
 - **Vitest** — Framework de testing rápido y moderno compatible con Vite
 - **Node.js** — Entorno de ejecución
 
-mi-proyecto-ts/
-├── src/ejercicios      # Código fuente
-│   └── calculadora.ts  # Ejemplo: funciones matemáticas
-├── tests/              # Tests escritos con Vitest
-│   └── calculadora.test.ts
-├── package.json
-├── tsconfig.json
-└── README.md
+- mi-proyecto-ts/
+- ├── src/ejercicios      # Código fuente
+- │   └── calculadora.ts  # Ejemplo: funciones matemáticas
+- ├── tests/              # Tests escritos con Vitest
+- │   └── calculadora.test.ts
+- ├── package.json
+- ├── tsconfig.json
+- └── README.md
 
 
 ---
