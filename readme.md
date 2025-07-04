@@ -12,17 +12,28 @@ Green – Escribir el código mínimo para que el test pase
 
 Refactor – Mejorar el diseño sin romper los tests
 
-✅ Ejercicios incluidos
-✅ add(string): suma los números contenidos en un string
-✅ Operaciones básicas (suma, resta, multiplicación, división)
+---
+
+- ✅ Ejercicios incluidos
+- ✅ **add(string)**: suma los números contenidos en un string, incluyendo soporte para delimitadores personalizados, números negativos y notación científica.
+- ✅ **Operaciones básicas**: suma, resta, multiplicación y división con validaciones (números negativos, división por cero, etc.).
+- ✅ **fizzBuzz**: devuelve "Fizz" si el número es divisible por 3, "Buzz" si es divisible por 5, y "FizzBuzz" si es divisible por ambos. Soporta números negativos y decimales.
+- ✅ **tictactoe**: evalúa un tablero de Ta-Te-Ti y determina si hay un ganador (X u O), considerando filas, columnas y diagonales. Soporta tableros de tamaño variable.
+- ✅ **toRoman**: convierte un número entero a su representación en números romanos (ej: 1994 → "MCMXCIV").
 
 🔜 Katas adicionales por agregar proximamente (Bowling game, Game of life, etc.)
+
+---
 
 ## 🛠️ Tecnologías utilizadas
 
 - **TypeScript** — Lenguaje principal
 - **Vitest** — Framework de testing rápido y moderno compatible con Vite
 - **Node.js** — Entorno de ejecución
+
+---
+
+## 🛠️ Arquitectura del proyecto
 
 - mi-proyecto-ts/
 - ├── src/ejercicios      # Código fuente
@@ -32,7 +43,6 @@ Refactor – Mejorar el diseño sin romper los tests
 - ├── package.json
 - ├── tsconfig.json
 - └── README.md
-
 
 ---
 
