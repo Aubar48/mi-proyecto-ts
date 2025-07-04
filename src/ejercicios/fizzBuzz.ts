@@ -1,8 +1,15 @@
 export type FizzBuzz = (number: number) => string;
 
 export const fizzBuzz: FizzBuzz = (number: number): string => {
-  if (number % 3 === 0 && number % 5 === 0) return "FizzBuzz";
-  if (number % 3 === 0) return "Fizz";
-  if (number % 5 === 0) return "Buzz";
+  // Función auxiliar para comprobar divisibilidad con decimales
+  const esDivisible = (num: number, divisor: number): boolean => {
+    const resultado = num / divisor;
+    return Number.isInteger(resultado);
+  };
+
+  if (esDivisible(number, 3) && esDivisible(number, 5)) return "FizzBuzz";
+  if (esDivisible(number, 3)) return "Fizz";
+  if (esDivisible(number, 5)) return "Buzz";
+
   return number.toString();
 };
