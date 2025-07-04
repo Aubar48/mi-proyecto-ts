@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { evaluate, ASTNode } from '../ejercicios/evaluate'  // ajustá la ruta según tu proyecto
+import { evaluate, ASTNode } from '../ejercicios/evaluate' 
 
 describe('evaluate()', () => {
   it('evalúa un número simple', () => {
@@ -48,6 +48,51 @@ describe('evaluate()', () => {
           left: { type: "Literal", value: 2 },
           right: { type: "Literal", value: 8 },
         },
+      },
+    });
+  });
+
+  it('evalúa función matemática simple', () => {
+    const ast = evaluate("sin(0)");
+    expect(ast).toEqual({
+      type: "FunctionCall",
+      name: "sin",
+      argument: { type: "Literal", value: 0 },
+    });
+  });
+
+  it('evalúa función matemática con expresión', () => {
+    const ast = evaluate("cos(1 + 1)");
+    expect(ast).toEqual({
+      type: "FunctionCall",
+      name: "cos",
+      argument: {
+        type: "BinaryExpression",
+        operator: "+",
+        left: { type: "Literal", value: 1 },
+        right: { type: "Literal", value: 1 },
+      },
+    });
+  });
+
+  it('evalúa variable simple', () => {
+    const ast = evaluate("pi");
+    expect(ast).toEqual({
+      type: "Variable",
+      name: "pi",
+    });
+  });
+
+  it('evalúa expresión con variable y función', () => {
+    const ast = evaluate("sin(pi / 2)");
+    expect(ast).toEqual({
+      type: "FunctionCall",
+      name: "sin",
+      argument: {
+        type: "BinaryExpression",
+        operator: "/",
+        left: { type: "Variable", name: "pi" },
+        right: { type: "Literal", value: 2 },
       },
     });
   });

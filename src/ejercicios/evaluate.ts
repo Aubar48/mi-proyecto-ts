@@ -1,16 +1,18 @@
-export type ASTNode = 
+export type ASTNode =
   | { type: 'Literal'; value: number }
-  | { type: 'BinaryExpression'; operator: string; left: ASTNode; right: ASTNode };
+  | { type: 'BinaryExpression'; operator: string; left: ASTNode; right: ASTNode }
+  | { type: 'FunctionCall'; name: string; argument: ASTNode }
+  | { type: 'Variable'; name: string };
 
 export type Evaluate = (expression: string) => ASTNode;
 
 export const evaluate: Evaluate = (expression: string) => {
-  // Limpiar espacios
   const tokens = tokenize(expression);
   let pos = 0;
 
   function tokenize(str: string): string[] {
-    const re = /\s*([()+\-*/]|\d+(\.\d+)?|\S)\s*/g;
+    // Reconoce números, operadores, paréntesis y palabras (funciones, variables)
+    const re = /\s*([()+\-*/]|[a-zA-Z_][a-zA-Z0-9_]*|\d+(\.\d+)?|\S)\s*/g;
     const result: string[] = [];
     let m;
     while ((m = re.exec(str)) !== null) {
@@ -62,6 +64,30 @@ export const evaluate: Evaluate = (expression: string) => {
       return node;
     }
 
+    // Si es identificador: función o variable
+    if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(token)) {
+      // Si siguiente token es '(', es función
+      if (tokens[pos] === '(') {
+        pos++; // consumir '('
+        const arg = parseExpression();
+        if (tokens[pos++] !== ')') {
+          throw new Error('Paréntesis no cerrado en función');
+        }
+        return {
+          type: 'FunctionCall',
+          name: token,
+          argument: arg,
+        };
+      } else {
+        // Sino, es variable
+        return {
+          type: 'Variable',
+          name: token,
+        };
+      }
+    }
+
+    // Número literal
     const value = parseFloat(token);
     if (!isNaN(value)) {
       return { type: 'Literal', value };
