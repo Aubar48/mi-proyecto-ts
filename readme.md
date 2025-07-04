@@ -16,7 +16,7 @@ Refactor – Mejorar el diseño sin romper los tests
 ✅ add(string): suma los números contenidos en un string
 ✅ Operaciones básicas (suma, resta, multiplicación, división)
 
-🔜 Katas adicionales por agregar proximamente (FizzBuzz, Roman Numerals, etc.)
+🔜 Katas adicionales por agregar proximamente (AST matemático, etc.)
 
 ## 🛠️ Tecnologías utilizadas
 
